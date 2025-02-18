@@ -1,5 +1,5 @@
 //Requerimentos: [CONIO2.H] [STDLIB.H] [STDIO.H] [CTYPE.H] [STRING.H]
-#include <sys/stat.h> //Utilizado para criação do diretório "ArquivosDoMenu"
+#include <sys/stat.h> //Utilizado para criaÃ§Ã£o do diretÃ³rio "ArquivosDoMenu"
 
 //Constantes referentes a distancia da borda esquerda da tela
 #define DISTANCIA_BORDA_LINHA 2
@@ -79,6 +79,7 @@ void CriaArquivosMenu(int NumeroDeOpcoes) {
 			
 			mkdir("ArquivosDoMenu");
 			printf("--NOMEAMENTO DE OPCOES--\n");
+			printf("Numero maximo de caracteres por opcao definido = %d\n", QUANTIDADE_MAXIMA_CARACTER_OPCAO);
 			for(int i = 1; i <= NumeroDeOpcoes; i++) {
 				
 				printf("\nInforme a %d Opcao: ", i);
@@ -113,6 +114,7 @@ void Menu(int TamanhoHorizontal, int TamanhoVertical, int NumeroDeOpcoes, int Co
 		gotoxy(TamanhoVertical / 2 - (QUANTIDADE_MAXIMA_CARACTER_OPCAO / 2) + 2,DISTANCIA_OPCAO_BORDA_MENU_LINHA + (DISTANCIA_ENTRE_OPCOES * i) + 1);
 		
 		CaracterDaOpcao = fgetc(PtrOp);
+		printf("[ ]");
 		while(CaracterDaOpcao != '\0' && !feof(PtrOp)) {
 			printf("%c", CaracterDaOpcao);
 			CaracterDaOpcao = fgetc(PtrOp);
@@ -130,7 +132,7 @@ int Navegacao(int TamanhoVertical, int NumeroDeOpcoes) {
 	int PosicaoAtual = DISTANCIA_OPCAO_BORDA_MENU_LINHA + DISTANCIA_ENTRE_OPCOES + 1;
 	char Tecla;
 	
-	gotoxy(TamanhoVertical / 2 - (QUANTIDADE_MAXIMA_CARACTER_OPCAO / 2) + 1, PosicaoAtual);
+	gotoxy(TamanhoVertical / 2 - (QUANTIDADE_MAXIMA_CARACTER_OPCAO / 2) + 3, PosicaoAtual);
 		
 	do {
 		
@@ -151,7 +153,7 @@ int Navegacao(int TamanhoVertical, int NumeroDeOpcoes) {
 				PosicaoAtual += DISTANCIA_ENTRE_OPCOES;
 		}
 		
-		gotoxy(TamanhoVertical / 2 - (QUANTIDADE_MAXIMA_CARACTER_OPCAO / 2) + 1, PosicaoAtual);
+		gotoxy(TamanhoVertical / 2 - (QUANTIDADE_MAXIMA_CARACTER_OPCAO / 2) + 3, PosicaoAtual);
 		
 	}while(Tecla != 13);
 	
@@ -160,4 +162,3 @@ int Navegacao(int TamanhoVertical, int NumeroDeOpcoes) {
 	return PosicaoAtual;
 	
 }
-
