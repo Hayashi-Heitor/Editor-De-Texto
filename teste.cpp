@@ -1,9 +1,10 @@
 #include <stdio.h>
-#include <conio2.h>
+//#include <conio2.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
 
+#include "meuconio.h"
 #include "CriadorDeMenus.h"
 
 int main (void) {
